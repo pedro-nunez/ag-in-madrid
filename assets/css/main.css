@@ -188,6 +188,17 @@ h2 {
   opacity: 1;
 }
 
+/* Mobile-only top bar (see the @media block below). Hidden on desktop,
+   where the title is the in-page <h1> and the info/theme toggles just
+   float in the corners above it instead. */
+.topbar {
+  display: none;
+}
+
+.topbar-title {
+  font-weight: bold;
+}
+
 /* Info toggle, fixed top-left symmetrically to .theme-toggle
    top-right; reveals a short explanatory popup on click. */
 .info-toggle-wrap {
@@ -264,5 +275,35 @@ h2 {
 
   .page-content {
     padding: 3rem 1.25rem 3.5rem;
+  }
+
+  /* .topbar shows the title on mobile instead, so the in-page one
+     would just duplicate it. */
+  h1 {
+    display: none;
+  }
+
+  .topbar {
+    align-items: center;
+    background: var(--sidebar-bg-color);
+    border-bottom: 1px solid var(--text-color);
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 20;
+  }
+
+  /* Re-centered on the topbar's own vertical midpoint (half its 3rem
+     height) instead of the fixed 0.75rem corner offset used on
+     desktop, so both buttons sit on the bar's center line regardless
+     of their own height. */
+  .info-toggle-wrap,
+  .theme-toggle {
+    top: 1.5rem;
+    transform: translateY(-50%);
   }
 }
