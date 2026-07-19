@@ -1,6 +1,6 @@
 ---
 layout: default
-title: AG in Madrid
+title: Algebraic Geometry in Madrid
 ---
 
 <div class="info-toggle-wrap">
