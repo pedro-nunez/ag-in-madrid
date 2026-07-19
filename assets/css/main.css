@@ -99,7 +99,11 @@ h2 {
 }
 
 /* Fixed corner elements standing in for the main site's nav: the info
-   toggle (top-left) and theme toggle (top-right). */
+   toggle (top-left) and theme toggle (top-right). Both are anchored by
+   their vertical center (top + translateY(-50%)) rather than their top
+   edge, at the same 1.9rem point, so the two buttons share a horizontal
+   center line even though they're differently sized -- see .info-toggle
+   below, which is smaller than this one. */
 .theme-toggle {
   align-items: center;
   background: none;
@@ -110,8 +114,9 @@ h2 {
   justify-content: center;
   padding: 0.4rem;
   position: fixed;
-  top: 0.75rem;
+  top: 1.9rem;
   right: 0.75rem;
+  transform: translateY(-50%);
   z-index: 30;
 }
 
@@ -200,11 +205,14 @@ h2 {
 }
 
 /* Info toggle, fixed top-left symmetrically to .theme-toggle
-   top-right; reveals a short explanatory popup on click. */
+   top-right; reveals a short explanatory popup on click. Anchored at
+   the same 1.9rem vertical center as .theme-toggle (see above) so it
+   lines up with it despite being the smaller of the two. */
 .info-toggle-wrap {
   position: fixed;
-  top: 0.75rem;
+  top: 1.9rem;
   left: 0.75rem;
+  transform: translateY(-50%);
   z-index: 30;
 }
 
@@ -215,7 +223,7 @@ h2 {
   color: #888;
   cursor: pointer;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
   justify-content: center;
   line-height: 1;
   padding: 0.4rem;
@@ -298,9 +306,9 @@ h2 {
   }
 
   /* Re-centered on the topbar's own vertical midpoint (half its 3rem
-     height) instead of the fixed 0.75rem corner offset used on
-     desktop, so both buttons sit on the bar's center line regardless
-     of their own height. */
+     height) instead of the 1.9rem point used on desktop, so both
+     buttons sit on the bar's center line regardless of their own
+     height. */
   .info-toggle-wrap,
   .theme-toggle {
     top: 1.5rem;
